@@ -62,7 +62,7 @@ function App() {
 
   const handleFormSubmit = (formData) => {
     addTodo(formData)
-    toggleDialog
+    toggleDialog()
   }
 
   return (
