@@ -19,10 +19,10 @@ export function ToDoItem ({ item }) {
                     {item.description}
                 </p>
                 <div className="actions">
-                    <button className="btn">
+                    <button className="btn-item">
                         <IconTrash />
                     </button>
-                    <button className="btn">
+                    <button className="btn-item">
                         <IconPencil />
                     </button>
                 </div>
