@@ -2,7 +2,7 @@ import { Button } from '../Button'
 import { TextInput } from '../TextInput'
 import './todo-form.style.css'
 
-export function TodoForm({ onSubmit }) {
+export function TodoForm({ onSubmit, defaultValue }) {
 
   return (
     <form action={onSubmit} className='todo-form'>
@@ -10,6 +10,7 @@ export function TodoForm({ onSubmit }) {
         placeholder="Digite o item que deseja adicionar"
         required
         name="description"
+        defaultValue={defaultValue}
       />
       <Button>
         Salvar item

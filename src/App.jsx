@@ -1,4 +1,4 @@
-import { use, useState } from "react"
+import { use } from "react"
 import { ChecklistsWrapper } from "./components/ChecklistsWrapper"
 import { Container } from "./components/Container"
 import { FabButton } from "./components/FabButton"
@@ -11,58 +11,20 @@ import TodoContext from "./components/TodoProvider"
 import { TodoGroup } from "./components/TodoGroup"
 import { TodoForm } from "./components/TodoForm"
 
-// const todos = [
-//   {
-//     id: 1,
-//     description: "JSX e componentes",
-//     completed: false,
-//     createdAt: "2022-10-31"
-//   },
-//   {
-//     id: 2,
-//     description: "Props, state e hooks",
-//     completed: false,
-//     createdAt: "2022-10-31"
-//   },
-//   {
-//     id: 3,
-//     description: "Ciclo de vida dos componentes",
-//     completed: false,
-//     createdAt: "2022-10-31"
-//   },
-//   {
-//     id: 4,
-//     description: "Testes unitários com Jest",
-//     completed: false,
-//     createdAt: "2022-10-31"
-//   }
-// ]
-// const completed = [
-//   {
-//     id: 5,
-//     description: "Controle de inputs e formulários controlados",
-//     completed: true,
-//     createdAt: "2022-10-31"
-//   },
-//   {
-//     id: 6,
-//     description: "Rotas dinâmicas",
-//     completed: true,
-//     createdAt: "2022-10-31"
-//   }
-// ]
-
 function App() {
 
-  const [showDialog, setShowDialog] = useState(false)
-
-  const { todos, addTodo } = use(TodoContext)
-
-  const toggleDialog = () => setShowDialog(!showDialog)
+  const {
+    todos,
+    addTodo,
+    showDialog,
+    openFormTodoDialog,
+    closeFormTodoDialog,
+    selectedTodo
+  } = use(TodoContext)
 
   const handleFormSubmit = (formData) => {
     addTodo(formData)
-    toggleDialog()
+    openFormTodoDialog()
   }
 
   return (
@@ -84,10 +46,13 @@ function App() {
           />
 
           <Footer>
-            <Dialog isOpen={showDialog} onClose={toggleDialog}>
-              <TodoForm onSubmit={handleFormSubmit} />
+            <Dialog isOpen={showDialog} onClose={closeFormTodoDialog}>
+              <TodoForm
+                onSubmit={handleFormSubmit}
+                defaultValue={selectedTodo?.description}
+              />
             </Dialog>
-            <FabButton onClick={toggleDialog}>
+            <FabButton onClick={openFormTodoDialog}>
               <IconPlus />
             </FabButton>
           </Footer>
