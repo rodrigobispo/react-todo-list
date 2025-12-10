@@ -10,7 +10,7 @@
     border: none;
     font-family: 'Montserrat', sans-serif;
     cursor: pointer;
-    /* padding: 16px; */
+    margin-top: 20px;
 }
 
 .btn:hover {
