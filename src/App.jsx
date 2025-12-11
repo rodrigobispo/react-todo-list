@@ -10,6 +10,7 @@ import { Dialog } from './components/Dialog';
 import TodoContext from "./components/TodoProvider"
 import { TodoGroup } from "./components/TodoGroup"
 import { TodoForm } from "./components/TodoForm"
+import { EmptyState } from "./components/EmtyState"
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
             heading="Para estudar"
             items={todos.filter(t => !t.completed)}
           />
+          { todos.length == 0 && <EmptyState /> }
           <TodoGroup
             heading="Concluído"
             items={todos.filter(t => t.completed)}
